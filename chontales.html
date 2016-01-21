@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CHONTALES</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+     <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>CHONTALES</h2>
+							<p>Pueblo de afuera o extranjero.
+							</p>
+						</header>
+						<span class="image"><img src="img/chontales/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/chontales/acerca.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>ACERCA<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>El ganadero departamento de Chontales se encuentra en la franja central del territorio nicaragüense, en un extenso 
+									paisaje de planicies y mesetas interrumpidas por elevaciones escarpadas como la Serranía de Amerrisque y los cerros de
+									la Cordillera Chontaleña. Aunque poco conocida en materia turística, la región cuenta con numerosos atractivos naturales,
+									arqueológicos, históricos, paisajísticos y de agroproducción en toda su extensión.</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<P>La oferta de servicios turísticos comienza a ser desarrollada y la infraestructura de hoteles y restaurantes es
+									apta para la recepción de visitantes. Chontales tiene una amplia costa en el Lago Cocibolca o Lago de Nicaragua, de bellos
+									atardeceres y vistas a la Isla de Ometepe.</P>
+									<p>Están allí varios sitios de gran atractivo y otros poco explorados. Cerca de Juigalpa se ubica el pequeño pueblo de 
+									Puerto Diaz, frente al que están varias islas.</p>
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p></p>
+								 <p>El ecoturismo, también tiene potencial de desarrollo, principalmente en los remanentes boscosos de la cordillera 
+								 Amerrique y las partes costeras del Lago de Nicaragua.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/chontales/estatua.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>TURISMO RURAL</h2>							
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<h3>¡CHONTALES ES BELLO!</h3>
+						<h6 style="text-align:justify">El mayor potencial turístico de Chontales se encuentra en su riqueza arqueológica, que puede generar un
+						desarrollo importante del Arqueoturismo (Turismo arqueológico) en Nicaragua. Otro potencial es el agroturismo en sus haciendas ganadera
+						s, asociado a la cría de ganado y la fabricación artesanal de derivados lácteos. El ecoturismo, también tiene potencial de desarrollo,
+						principalmente en los remanentes boscosos de la cordillera Amerrique y las partes costeras del Lago de Nicaragua.</h6>
+						<h6 style="text-align:justify">También piense en los artesanos, que con herramientas de piedra y madera, - casi con sus manos – 
+						tallaron, amorosa y pacientemente, cientos de estatuas para honrar a sus divinidades.</h6>
+						<ul class="actions">
+							<li><a href="http://turismoruralnicaragua.blogspot.com/2011/07/chontales-es-bello.html" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/chontales/rural.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Cordillera de Amerrisque</h2>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<P>La cordillera de Amerrisque es una cordillera montañosa que constituye la espina central de Nicaragua y forma parte de la 
+						Cordillera Centroamericana que se extiende a lo largo de Nicaragua durante unos 700 km desde Honduras en el noroeste hasta Costa
+						Rica en el suroeste, justo a unos pocos kilómetros del Mar Caribe.</p>
+						<P>Ha sido declarada Reserva Natural, se alza en promedio 994 metros sobre el nivel del mar, en cuyas alturas el viento sopla fuerte
+						y hay aire puro. Allí se establecieron los mayas, pueblo que dejó un legado histórico y antropológico.</P>
+						<ul class="actions">
+							<li><a href="img/chontales/cordillera.html" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">TURISMO</h1></center>
+
+<div id="gallery">
+	<a href="http://www.el19digital.com/articulos/ver/titulo:17613-archipielago-el-nancital-naturaleza-pura" class="show">
+		<img src="img/chontales/chonta.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Archipiélago El Nancital</h3>Esta belleza 
+		natural está conformada por 27 islas, las que en su mayoría se encuentran pobladas al menos por unas 120 familias que se dedican a la actividad 
+		pesquera de tipo artesanal, tanto para el consumo diario como de tipo comercial."/>
+	</a>	
+		<a href="http://www.aquinicaragua.com/zoo.html">
+		<img src="img/chontales/zoologico.jpg" alt="Sea Mist" width="780" height="460" title="" alt="" rel="<h3>El jardín Zoológico Thomas Belt</h3>Se encuentra ubicado
+		Entrada al en la ciudad de Juigalpa a 139 Km., de Managua, la capital de Nicaragua, El origen del nombre del zoológico es en honor al científico inglés Thomas Belt, 
+		que aportó muchos de sus conocimientos a la investigación de la flora, fauna, ríos y volcanes de Nicaragua."/>
+	</a>	
+	<a href="#">
+		<img src="img/chontales/museo.jpg" alt="Grass Blades" width="780" height="460" title="" alt="" rel="<h3>Museo Arqueológico - Gregorio Aguilar Barea</h3>
+ El Museo Antropológico ‘Gregorio Aguilar Barea’ es la más preciada joya de Juigalpa,  Ubicado en una de las principales avenidas de esta ciudad y resguardado
+ por imponentes ídolos, el Museo Arqueológico ‘Gregorio Aguilar Barea’ es una de las más preciadas joyas de Chontales, de la que hemos  sacado incalculable 
+ provecho los nicaragüenses durante más de cincuenta  años."/>
+	</a>
+	<a href="#">
+		<img src="img/chontales/cordillera.jpg" alt="Lightning" width="780" height="480" title="" alt="" rel="<h3>Cordillera Chontaleña</h3>La Cordillera
+		Chontaleña es una cordillera de origen volcánico ubicada en el centro de Nicaragua. Sirve de divisoria entre los ríos que discurren hacia el mar 
+		Caribe, como el Punta Gorda, el Rama, el Mico y el Siquia, y los que desembocan en el lago de Nicaragua, como el Acoyapa y el Tule."/>
+	</a>
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>
+				
+<div class="clear"></div>
+
+<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+				<li class="contenedor-boton"><a class="botoncito" href="departamentos/hotels/hotel_chontales.html">Hoteles</a></li>
+		        <li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_chontales.html">Restaurantes</a></li>
+	</ul>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+		</div>
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

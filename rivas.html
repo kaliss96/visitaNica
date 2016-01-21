@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>RIVAS</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+    <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>BARES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>RIVAS</h2>
+							<p>"Pueblos de la Meseta"
+							</br>Jinotepe y Diriamba, también conocidos como las “Ciudades Gemelas”
+							</p>
+						</header>
+						<span class="image"><img src="img/rivas/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/rivas/acerca.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>Acerca…<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>Situado en un amplio istmo que separa las aguas del Océano Pacífico con las del Lago de Nicaragua o Cocibolca, el
+									departamento de Rivas posee diversos atractivos naturales e históricos, así como dos de los destinos más visitados por
+									turístas extranjeros y nacionales: San Juan del Sur y sus varias playas marítimas, y la isla volcánica lacustre de Ometepe.
+									</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<P>Entre las playas de Rivas se encuentran varias de las más conocidas de toda Nicaragua, sea por su belleza o por sus
+									potentes olas. Su larga costa en el Pacífico está constituida por la secuencia de una multitud de playas de estructuras 
+									diferentes: algunas largas, otras en forma de pequeñas bahías flaqueadas por peñascos; algunas de arena oscura, otras de
+									arenas claras; algunas rodeadas por montañas, y otras pobladas por nada más que la naturaleza.</p>
+									
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p> El departamento, conformado por 10 municipios, tiene muchos otros atractivos urbanos y rurales. La ciudad de Rivas tiene
+								 un bonito centro colonial, hoteles, restaurantes y un interesante museo antropológico e histórico. En el municipio de Buenos
+								 Aires está la Punta de El Menco, así como la Laguna de Ñocarime que comparte con su vecino Potosí. Cárdenas es una delgada 
+								 franja de tierra que divide la frontera Sur con la costa del lago, y que posee muchos sitios naturales poco conocidos. </p>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/rivas/chico.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Cerro Chico Largo</h2>							
+						</header>
+						<h6 style="text-align:justify">Chico Largo es el nombre de una colina ubicada cerca de la Reserva Natural de Charco Verde, famosa por
+						estar involucrada en leyendas e historias de miedo. La idea central de todas éstas es que una persona muy grande (Chico Largo), quien
+						vive en la colina, inspira temor en la población. Unos piensan que representa al diablo, otros dicen que han habido personas 
+						transformadas en vacas después de haberle vendido su alma a éste. El hecho es notable ya que hay muchas vacas habitando el área.</h6></br>
+						<h6 style="text-align:justify">Para los que se atreven a tomar el riesgo de regresar como ganado, Chico Largo ofrece un buen sendero 
+						para caminar. El camino llega la cima donde tiene una buena vista. Puede ver Charco Verde y la Laguna Verde, así como la pequeña isla
+                       ‘El Quiste’.</h6>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/atractivo/51/cerro-chico-largo" class="button">Más</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/rivas/concepcion.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Volcán Concepción</h2>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<P>El Concepción se aproxima a ser un cono perfecto; es el volcán más grande en Ometepe, con una altura de 1,610 metros. Está todavía 
+						activo, el humo sale de su cráter y hay otras fumarolas también en la ladera.</P></br>
+						<p>Necesitará de mucha energía, resistencia y buena condición física para poder subir el Concepción. Es una de las escaladas más 
+						difíciles en Nicaragua, pues las cuestas son muy empinadas y el volcán es bastante alto. La parte baja de las laderas está cubierta de 
+						árboles.</p>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/atractivo/16/volcan-concepcion" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">TURISMO</h1></center>
+
+<div id="gallery">
+	<a href="https://vianica.com/sp/atractivo/15/volcan-maderas" class="show">
+		
+<img src="img/rivas/maderas.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Volcán Maderas</h3>
+		A pesar de ser el volcán más pequeño de la isla de Ometepe, el Maderas es un volcán alto, con casi 1,400 metros de altura."/>
+	</a>	
+	
+	<a href="https://vianica.com/sp/atractivo/98/cascada-de-san-ramon">
+		<img src="img/rivas/cascada.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Cascada de San Ramón</h3>
+		La cascada de San Ramón está localizada en la falda sur del volcán Maderas en la isla de Ometepe, a unos 4 kilómetros de pueblo de San Ramón."/>
+	</a>
+	
+	<a href="https://vianica.com/sp/atractivo/50/charco-verde">
+		<img src="img/rivas/charco.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Charco Verde</h3>
+		La Reserva Natural Chico Largo es un área local protegida entre los dos volcanes en de Ometepe, en la parte baja de la isla. El área encierra a una 
+		laguna, bosque y una playa."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/25/reserva-natural-playa-la-flor">
+		<img src="img/rivas/playa_flor.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Reserva Natural Playa La Flor</h3>
+		Playa La Flor es un santuario de la naturaleza. Nicaragua está bendecida con muchas playas donde las tortugas Paslama llegan a dejar sus huevos."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/444/reserva-silvestre-privada-estancia-del-congo">
+		<img src="img/rivas/congo.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Reserva Natural Privada Estancia del Congo</h3>
+		La Reserva Natural Privada Estancia del Congo (REC) es un área protegida cuya oferta turística está orientada a un turismo vivencial y de reencuentro
+		con la naturaleza."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/128/reserva-silvestre-privada-la-primavera">
+	    <img src="img/rivas/primavera.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Reserva Silvestre Privada La Primavera</h3>
+		La Primavera es una Reserva Silvestre Privada que pertenece al municipio de San Juan de Sur y se ubica a escasos 25 minutos en vehículo de la ciudad
+		de Rivas."/>
+	</a>
+		<a href="https://vianica.com/sp/atractivo/430/pena-inculta">
+		<img src="img/rivas/peña.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Sendero Ecotursitico Peña Inculta</h3>
+		El Sendero Ecoturístico Peña Inculta se encuentra ubicado en la comunidad Santo Domingo, cerca de la playa que lleva el mismo nombre, en el municipio
+		de Altagracia, Isla de Ometepe, específicamente en los humedales del Istián."/>
+	</a>
+		<a href="https://vianica.com/sp/atractivo/149/vivero-de-tortugas-marinas-de-punta-teonoste">
+		<img src="img/rivas/tortugas.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Vivero de tortugas marinas de Punta Teonoste</h3>
+		La playa de Punta Teonoste, ubicada en el litoral sur de la costa del Pacífico de Nicaragua, es un sitio donde regularmente se registran desoves de
+		tres especies de tortugas marinas: la paslama, la torita y la tora."/>
+	</a>
+		<a href="https://vianica.com/sp/atractivo/230/playa-el-astillero">
+		<img src="img/rivas/astillero.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa El Astillero</h3>
+		Esta playa pequeña se encuentra al Norte del pueblo de Tola, muy cercana a Las Salinas, y está poblada por una comunidad de pescadores."/>
+	</a>
+		<a href="https://vianica.com/sp/atractivo/442/playa-colorado">
+		<img src="img/rivas/colorado.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa Colorado</h3>
+		Es una de las pocas playas del Pacífico de Nicaragua cuya arena es blanca. El agua es de colores claros y sus olas son excelentes para practicar el surf."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/207/playa-el-coco">
+		<img src="img/rivas/coco.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa El Coco</h3>
+		Sus aguas son tranquilas y la playa es poco concurrida, por lo que es el lugar perfecto para visitar y relajarse."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/208/playa-el-ostional">
+		<img src="img/rivas/ostional.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa El Ostional</h3>
+		Esta playa, amplia e imponente, es una de las menos visitadas de la zona, quizá por su lejanía."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/136/playa-la-flor">
+		<img src="img/rivas/flor.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa La Flor</h3>
+		Otra bahía del municipio de San Juan del Sur es “La Flor”, una playa casi virgen que goza del privilegio de ser uno de los pocos desovaderos de tortuga
+		paslama y tortuga tora en el mundo."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/209/playa-maderas">
+		<img src="img/rivas/playa_maderas.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa Maderas</h3>
+		Esta es una de las playas más atractivas para los amantes del surf, ya que aquí se forman buenas y constantes olas para practicar este deporte, y se
+		pueden encontrar algunas opciones de hospedaje."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/210/playa-majagual">
+		<img src="img/rivas/majagual.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa Majagual</h3>
+		La playa de Majagual está junto a playa Maderas en una bahía privada y amplia, con vistas impresionantes."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/211/playa-marsella">
+		<img src="img/rivas/marsella.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa Marsella</h3>
+		Esta bahía de pescadores y casas veraniegas se encuentra justo al lado de San Juan del Sur, a solo 5 km hacia el Norte. Un pequeño estero llega hasta
+		el mar, y frente a la playa en el agua se puede apreciar una roca a la que llegan aves marinas."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/206/playa-san-juan-del-sur">
+		<img src="img/rivas/san_juan.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa San Juan del Sur</h3>
+		Esta playa es una bahía en forma de “u” casi perfecta, circundada por montañas. En esta se estableció el pueblo de San Juan del Sur, haciéndola una
+		de las más atractivas del país."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/59/punta-jesus-maria">
+		<img src="img/rivas/punta.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Punta Jesús María</h3>
+		La Punta Jesús María es el extremo más al oeste en la Isla de Ometepe. Cuando llegué a este punto podrá ver un estrecho de tierra muy angosto que se
+		extiende dentro del lago de Nicaragua, que puede llegar a medir hasta un kilómetro de largo en épocas secas."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/99/rio-istian">
+		<img src="img/rivas/istian.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Río Istián</h3>
+		Uno de los mejores lugares para ver aves en la isla de Ometepe es le río Istián, localizado en medio de las partes del volcán Maderas y la del 
+		Concepción en la isla."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/513/ojo-de-agua-ometepe">
+		<img src="img/rivas/ojo_agua.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>El Ojo de Agua</h3>
+		Este lugar increíble existe en Ometepe y se llama el ¡Ojo de Agua! El Ojo de Agua se encuentra ubicado en la comunidad Santo Domingo, en el municipio
+		de Altagracia, Isla de Ometepe."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/66/museo-de-antropologia-e-historia-de-rivas">
+		<img src="img/rivas/museo.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Museo de Antropología e Historia de Rivas</h3>
+		Otro detalle interesante ocurrido en esa casa hacienda, es que ahí funcionó un antiguo periódico de finales del siglo XIX titulado 'El Termómetro', en
+		el que se realizó la publicación de un poema titulado 'Lagrimas', del entonces adolescente poeta Rubén Darío"/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/65/canopy-tour-da-flying-frog">
+		<img src="img/rivas/canopy.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Canopy Tour Da Flying Frog</h3>
+		El canopy está ubicado en una extensa finca ganadera, con sembradíos de sorgo, que se extiende sobre una planicie y unas montañas en las que aún se
+		conserva la vegetación y fauna natural de la zona"/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/46/ciclismo-en-la-isla-de-ometepe">
+		<img src="img/rivas/ciclismo.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Ciclismo en la Isla de Ometepe</h3>
+		Para los ciclistas, Ometepe ofrece grandes posibilidades. La carretera recién pavimentada que va de Moyogalpa a Altagracia es la ruta más frecuentada."/>
+	</a>
+		<a href="https://vianica.com/sp/atractivo/49/deportes-acuaticos-en-ometepe">
+		<img src="img/rivas/acuaticos.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Deportes Acuáticos en Ometepe</h3>
+		Completamente rodeada por el Lago de Nicaragua, Ometepe ofrece distintas posibilidades para practicar el deporte acuático."/>
+	</a>
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>
+				
+				
+<div class="clear"></div>
+<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="https://vianica.com/sp/hotellist/destinations/rivas">Hoteles</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_rivas.html">Restaurantes</a></li>
+	</ul>
+		<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

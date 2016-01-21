@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>RIO SAN JUAN</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+    <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>RIO SAN JUAN</h2>
+							<p>O “el desaguadero”
+							</p>
+						</header>
+						<span class="image"><img src="img/rio_san_juan/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/rio_san_juan/rio.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>Acerca…<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>Un Tesoro por descubrir! es una conjugación de historia, belleza paisajista, cuna de artistas y pintores, de exuberante flora y fauna, de 
+									inmensa geografía terrestre y acuática, de indescriptibles lugares paradisíacos que se conjugan con la idiosincrasia, 
+									generosidad y hospitalidad de los lugareños, hacen de Río San Juan un destino turístico único en Centroamérica.</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<P>La exuberante naturaleza e importantes episodios de la historia se mezclan en la región del Río San Juan y lo hacen un 
+									destino realmente atractivo. Actualmente, grandes zonas de este río que conecta el gran Lago de Nicaragua (o Cocibolca) 
+									con el Mar Caribe, son Refugios de Vida Silvestre en los que se puede apreciar con facilidad multitudes de especies de la
+									flora y fauna tropical.</P>
+									<p>.</p>
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p>Anteriormente, esta zona fue muy ambicionada por poderosos países, fue atacada y transitada por 
+									piratas y defendida por héroes. El viaje río abajo por pangas públicas, lanchas privadas o kayaks es una experiencia increíble y permite alcanzar destinos
+								 de gran interés. Primero está la región de Sábalos, donde hay reservas naturales privadas y hoteles frente al río.</p>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/rio_san_juan/ruta.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Conglomerado Turístico</h2>							
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<h3>¡Ruta del Agua!</h3>
+						<h6 style="text-align:justify">La “Ruta del Agua” es un destino que combina productos turísticos basados en atractivos de la 
+						naturaleza y culturales, tomando como base la puesta en valor y utilización de los recursos pluviales, se activarán trayectos de ríos
+						y canales.</h6>
+						<h6 style="text-align:justify">La Ruta del Agua abarca desde el área del Archipiélago de Solentiname en la costa sureste del lago
+						Cocibolca hasta la desembocadura del río en el mar Caribe en la localidad de San Juan del Norte conocido también como San Juan de
+						Nicaragua.</h6>
+						<ul class="actions">
+							<li><a href="http://www.visitanicaragua.com/ruta-del-agua-nicaragua/" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/rio_san_juan/castillo.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>El Castillo</h2>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<P>Esta ubicado a 60 km de San Carlos, durante el recorrido en lancha sobre el Rio San Juan encontraras los raudales machuca, el 
+						diablo y el toro este último ubicado en la localidad de Boca de Sábalosaragua.</p>
+						<P>EL monumento histórico Fortaleza de la Inmaculada Concepción de María, ubicado en 375 hectáreas es una infraestructura con
+						exposición de hechos históricos, hoy en día restaurada y con su belleza escénica es un importante atractivo turístico.</P>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/nicaragua/rio-san-juan/el-castillo/14.2" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">TURISMO</h1></center>
+
+<div id="gallery">
+	<a href="https://vianica.com/sp/atractivo/143/refugio-de-vida-silvestre-los-guatuzos" class="show">
+		<img src="img/rio_san_juan/guatuzos.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Refugio de Vida Silvestre Los Guatuzos</h3>Es un refugio de vida
+		silvestre con una extensión de 437 km cuadrados y con 47,000 hectáreas es parte de la reserva biológica Indio Maíz constituida por sabanas anegada de
+		arboles y palmas,bosque latifoliados y pantanosos,su exuberante vegetación conforma diferentes tipos de ecosistema que abarcan lagunas,humedales,
+		bosque seco y húmedos."/>
+	</a>	
+		<a href="http://www.nicatour.net/es/nicaragua/solentiname.cfm">
+		<img src="img/rio_san_juan/solentiname_nicaragua.jpg" alt="Sea Mist" width="780" height="460" title="" alt="" rel="<h3>Archipiélago de Solentiname</h3>
+		Se encuentra ubicada en el gran lago de Nicaragua compuesta por 36 Islas de las cuales isla Mancarrón es la más accesible y conocida, siendo más
+		grande del archipiélago. La isla Mancarrón con su historia de la creación de la iglesia campesina dirigida por el padre Ernesto Cardenal encontrara la
+		biblioteca con sus piezas arqueológicas, gran cantidad de artesanos y pintores."/>
+	</a>	
+	<a href="https://vianica.com/sp/atractivo/55/reserva-biologica-indio-maiz">
+		<img src="img/rio_san_juan/indio.jpg" alt="Grass Blades" width="780" height="460" title="" alt="" rel="<h3>Reserva Biológica Indio Maíz</h3>
+ Es una reserva natural de 361,875 hectáreas de Bosque siempre verde bien drenado, bosque siempre aluvial moderadamente drenado, Bosque siempre verde 
+ pantanoso (Campnosperma sp y prioria sp), bosque siempre verde pantanoso dominado por palmas (yolillales)."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/137/reserva-natural-esperanza-verde">
+		<img src="img/rio_san_juan/refugio.jpg" alt="Lightning" width="780" height="460" title="" alt="" rel="<h3>Reserva Natural Esperanza Verde</h3>
+		La Reserva Esperanza Verde se encuentra localizada en la comunidad de Río Frío, municipio de San Carlos, departamento de Río San Juan."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/333/kayak-en-rio-san-juan">
+		<img src="img/rio_san_juan/kayak.jpg" alt="Lightning" width="780" height="460" title="" alt="" rel="<h3>Kayak en Río San Juan</h3>
+		Con una longitud de 190 kilómetros que conectan el Lago Cocibolca con el Mar Caribe, el Río San Juan es uno de los más impresionantes ríos de Nicaragua
+		."/>
+	</a>
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>
+				
+<div class="clear"></div>
+
+<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="https://vianica.com/hotellist/destinations/rio-san-juan">Hoteles</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_rio_san_juan.html">Restaurantes</a></li>
+	</ul>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

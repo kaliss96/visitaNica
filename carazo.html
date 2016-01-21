@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CARAZO</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+    <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>CARAZO</h2>
+							<p>"Pueblos de la Meseta"
+							</br>Jinotepe y Diriamba, también conocidos como las “Ciudades Gemelas”
+							</p>
+						</header>
+						<span class="image"><img src="img/carazo/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/carazo/acerca.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>Acerca…<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>Está localizado a 30 km de Managua, y hacia el suroeste están los llamados Pueblos de la Meseta: Jinotepe y Diriamba, 
+									también conocidos como las “Ciudades Gemelas”, que gozan de un excelente clima; son centros cafetaleros y comparten las
+									mismas festividades religiosas y folclóricas, las cuales son muy famosas. Si no ha presenciado el “Baile del toro guaco”, 
+									las festividades en honor de San Sebastián y Santiago, y el baile de “El güegüense”, aquí podrá hacerlo.</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<P>Muy cercano a Carazo, queda Masatepe, donde usted puede disfrutar de la riquísima sopa de mondongo. También encontrará
+									una variada oferta de artículos elaborados en mimbre. Aquí también se celebra la Feria de la Piña y la Mandarina, 
+									en noviembre. Si le gustan los dulces, en esta ciudad los encontrará en cantidad y calidad: de coco, de leche, de 
+									zapoyol, de maní</P>
+									<p>La ciudad de Diriamba resulta ser uno de los destinos más interesantes de la región,</p>
+									
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p> tanto por su simpático casco urbano
+								 de centro neocolonial como por sus vistosas fiestas populares, durante las que se pueden apreciar algunas de las más bellas
+								 danzas tradicionales del país, como la comedia-bailete El Güegüense o Macho Ratón, el Toro Huaco, El Viejo y la Vieja, Las 
+								 Inditas y El Gigante. Tiene restaurantes y hoteles, y en su área rural hay bonitas cascadas más la reserva natural La Máquina.
+								 </p>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/carazo/salto.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Cascada Salto de la Culebra</h2>							
+						</header>
+						<h6 style="text-align:justify">A pesar que esta cascada es visitada con frecuencia por habitantes de las comunidades rurales de la 
+						zona, es poco conocida por muchos; fue hasta hace poco que comenzó a atraer a personas ajenas al lugar. Sin embargo, no hay mucho 
+						desarrollo turístico en el Salto de la Culebra y es todavía una actividad fuera de lo común.</h6></br>
+						<h6 style="text-align:justify">Llegar a esta cascada requiere pasar por carreteras de tierra, caminar cuestas bastante inclinadas y
+						preparar un plan o preguntar a menudo el camino ya que no hay ninguna señal que indique en donde queda la cascada. El camino es de
+						unos 20 minutos, saliendo de la comunidad más cercana del salto.</h6>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/atractivo/70/cascasa-salto-de-la-culebra" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/carazo/ecoturistico.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Centro Ecoturístico La Máquina</h2>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<P>El Centro Ecoturístico La Máquina comprende 13 hectáreas de bosque seco tropical, 15 hectáreas con plantación de bosques que 
+						incluye tres especies de cedro y 60 hectáreas bosque regenerativo. Esta última es parte de un programa de reforestación.</P></br>
+						<p> Aquí se puede
+						ver aves, mamíferos pequeños, lagartijas, serpientes y otros animales típicos de un bosque seco tropical. La reserva también alberga a
+						árboles antiguos que son un verdadero espectáculo visual. La reserva ofrece una gran variedad de opciones para los visitantes.</p>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/atractivo/69/centro-ecoturistico-la-maquina" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">TURISMO</h1></center>
+
+<div id="gallery">
+	<a href="https://vianica.com/sp/atractivo/282/refugio-de-vida-silvestre-rio-escalante-chacocente" class="show">
+		
+<img src="img/carazo/refugio.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Refugio de Vida Silvestre Río Escalante - Chacocente</h3>
+		Durante todo el año en el refugio -popularmente conocido sólo como “Chacocente”- se puede acampar, recorrer sus playas y sus senderos, observar
+		plantas, flores, árboles, insectos, aves y tantos otros animales, así como comprar servicios de comida local."/>
+	</a>	
+	<a href="https://vianica.com/sp/atractivo/213/playa-casares">
+		<img src="img/carazo/casares.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa Casares</h3>
+		En la costa se pueden apreciar interesantes entradas de la marea sobre las rocas, dando lugar a imágenes espectaculares."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/214/playa-chacocente">
+		<img src="img/carazo/chacocente.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa Chacocente</h3>
+		Declarada Refugio de Vida Silvestre, Playa Chacocente es - junto con Playa La Flor (Rivas) - un sitio privilegiado por recibir arribadas masivas de 
+		tortugas marinas."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/215/playa-huehuete">
+		<img src="img/carazo/huete.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa Huehuete</h3>
+		Esta playa de arena oscura presenta áreas planas y también rocosas; y ofrece un espacio con privacidad para el turismo de sol y playa."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/212/playa-la-boquita">
+		<img src="img/carazo/boquita.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Playa La Boquita</h3>
+		Esta playa tiene zonas rocosas sobre las que puede tomar el sol, y también zonas despejadas ideales para el baño. Es una de las más visitadas de la
+		zona, gracias a su muy conocido Centro Turístico."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/68/museo-ecologico-de-tropico-seco">
+		<img src="img/carazo/museo.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Museo Ecológico de Trópico Seco</h3>
+		El museo Ecológico de Trópico Seco da a los visitantes una amplia vista de la flora y fauna del departamento de Carazo y otras áreas del Pacífico de
+		Nicaragua."/>
+	</a>
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>
+				
+<div class="clear"></div>
+<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/hotels/hotel_carazo.html">Hoteles</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_carazo.html">Restaurantes</a></li>
+	</ul>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

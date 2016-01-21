@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Conociendo Nicaragua</title>
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="departamentos/responsiv/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="departamentos/responsiv/font-awesome/css/font-awesome.css" >
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="departamentos/responsiv/js/menu.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+</script>
+
+<style type="text/css">
+body{
+	font-family:arial;
+}
+
+.clear {
+	clear:both;
+}
+
+#gallery {
+	position:relative;
+	height:360px;
+	margin-left:30%;
+	margin-right:30%; 
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:500;
+	}
+
+	#gallery .caption {
+		z-index:600; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+</style>
+</head>
+
+<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+    <ul class="menu">
+   <li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+     
+ </div><!--end mainWrap-->
+
+<body>
+<center><h1 align="center">Conociendo Nicaragua</h1></center>
+
+<div id="gallery">
+	<a href="http://visitabosawas.blogspot.com" class="show">
+		<img src="img/galeria/reserva.jpg" alt="Flowing Rock" width="580" height="360" title="" alt="" rel="<h3>Reserva de biosfera Bosawas</h3>En la Reserva 
+		BOSAWAS se encuentra el área más grande de bosque tropical húmedo todavía no intervenido en América Central"/>
+	</a>	
+	
+	<a href="http://www.elnuevodiario.com.ni/especiales/70176-bosque-virgen-listo-turistas/">
+		<img src="img/galeria/macizo.jpg" alt="Ladybug" width="580" height="360" title="" alt="" rel="<h3>Macizo de Peñas Blancas</h3>Un sitio ecoturístico
+		ubicado a más de 12 kilómetros de El Cua, Jinotega"/>
+	</a>
+	<a href="https://vianica.com/sp/hotels/196/isleta-el-roble">
+		<img src="img/galeria/isletas.jpg" alt="Lightning" width="580" height="360" title="" alt="" rel="<h3>Isleta El Roble</h3>El Roble puede albergar a una
+		sola pareja, o a un grupo de hasta 12 personas por igual."/>
+	</a>
+	<a href="https://vianica.com/sp/tours/133">
+		<img src="img/galeria/kayak.jpg" alt="Lotus" width="580" height="360" title="" alt="" rel="<h3>Isletas en Kayak</h3>Podrá observar animales escondidos
+		entre los frondosos árboles y la rica vegetación a través de pequeños canales."/>
+	</a>	
+	<a href="https://vianica.com/sp/atractivo/39/mirador-de-catarina">
+		<img src="img/galeria/mirador.jpg" alt="Mojave" width="580" height="360" title="" alt="" rel="<h3>El mirador de Catarina</h3>El mirador de Catarina es uno de las 
+		colinas más altas rodeando la Laguna de Apoyo, y la vista desde aquí es muy buena."/>
+	</a>		
+	<a href="http://www.nicaragua-spanish-lessons.com/activities.html">
+		<img src="img/galeria/diriomito-nicaragua.jpg" alt="Diriomito" width="580" height="360" title="" alt="" rel="<h3>Actividades</h3>Diriomito is a very 
+		small rural village located in the rim of the crater of Laguna de Apoyo."/>
+	</a>	
+	<a href="http://nicaraguavolcanyfrontera.blogspot.com/2011/09/reserva-de-la-biosfera-bosawas.html">
+		<img src="img/galeria/reserva1.jpg" alt="Grass Blades" width="580" height="360" title="" alt="" rel="<h3>Reserva de la Biosfera Bosawas</h3>Es parte
+		integrante de la red mundial de Reservas de Biosfera compuesta a la fecha por 525 reservas de biosfera ubicadas en diferentes partes del mundo"/>
+	</a>
+	<a href="http://www.hmerida.com/espanol/activity/5">
+		<img src="img/galeria/Ojo.jpg" alt="Ojo" width="580" height="360" title="" alt="" rel="<h3>Actividades: Ojo de Agua</h3>El Ojo de Agua es el nombre de las 
+		piscinas, las cuales son mitad natural y mitad artificial. La fuente de agua es natural, las piscinas están hechas de cemento y rocas"/>
+	</a>	
+	<a href="http://www.hoteltraveltour.com/nicaragua/ometepe-rivas-es.html">
+		<img src="img/galeria/island-nicaragua.jpg" alt="island" width="580" height="360" title="" alt="" rel="<h3>La Isla de Ometepe</h3>La Isla de Ometepe es la isla
+		más grande de agua dulce del mundo. Habitada por tiburones de agua dulce, está ubicada en el Lago Cocibolca"/>
+	</a>
+	<div class="caption"><div class="content"></div></div>
+</div>
+<div class="clear"></div>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MASAYA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="flotante.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+
+			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+        <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+  <!-- Menu Flotante 
+	<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">Zonas Turisticas</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="#">Mirador de Catarina</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="#">Laguna de Apoyo</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="#">La Laguna de Masaya</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="#">La Cruz de Bobadilla</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="#">La Laguna de Tisma</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="#">El Malecón de Masaya</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="#">La Fortaleza de El Coyotepe</a></li>
+	</ul>
+	  FIN -->
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>MASAYA</h2>
+							<p>Ciudad de las flores<br />
+							 y Cuna del folklore Nicaragüense</p>
+						</header>
+						<span class="image"><img src="img/masaya/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/masaya/pic02.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>HISTORIA<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>Se cree que los Niquiranos fueron los primeros pobladores de las tierras de Masaya y se tiene constancia de los
+									asentamientos de poblaciones como Nindirí, Niquinohomo o Monimbó anteriores a la conquista española. Uno de los barrios
+									principales de la ciudad es el de Monimbó (en español quiere decir "cerca del agua") y está situado muy próximo a la
+									laguna. También grupos chorotegas habitaron estas tierras. Hay constancia documental que en el siglo VI, en Monimbó
+									había una población de 250 tributarias.</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>Pedrarias Dávila inicia la conquista de estas tierras en 1524 y crea las primeras encomiendas. Al estar Masaya ubicada
+									en el camino principal entre Granada y León (entonces León el Viejo) y formar parte del camino de Panamá se convirtió en
+									un lugar de descanso muy apropiado. Esto unido a su agradable clima y fértil suelo atrajo a muchas personas a asentarse en
+									la ciudad, dando lugar de esta forma al nacimiento de la Masaya colonial.</p>
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p>El 24 de marzo de 1819 el rey de España Fernando VII otorgó el título de "Muy Noble y Leal Villa Fiel de San Fernando de
+								 Masaya" que se puede leer en el escudo de la ciudad desde entonces. El 2 de septiembre de 1839 se declaró a Masaya ciudad.
+								 En su escudo, además de la leyenda indicada hay otra que dice "Viva el corazón de María".</p>
+								 <p>De los diferentes asentamientos indígenas únicamente Monimbó ha conservado la identidad étnica a través del tiempo.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/masaya/mercado.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Sitios de Inter&eacute;s</h2>
+							<p>Mercado de Masaya</p>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<p>La construcción del Mercado de Artesanías de Masaya se remonta al año 1888 y su inauguración fue en 1891.</p>
+						<p>Ubicado en el centro de la ciudad, la también llamada Ciudad de las Flores y reconocida como cuna del folclor 
+						nicaragüense, Masaya presume de tener el único mercado en este estilo del país.</p>
+						<p>En el Mercado de Artesanías de Masaya la oferta de alimentos y bebidas no es tan amplia, sin embargo puede 
+						encontrar con qué matar el hambre, con platillos y bebidas tradicionales, que puede ser cubierto con C$$100 .</p>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/atractivo/3/mercado-de-artesanias-de-masaya" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/masaya/masaya10.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Sitios de inter&eacute;s</h2>
+							<p>Parque Nacional Volcan Masaya</p>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<p>El Parque Nacional Volcan Masaya, es uno de los fenomenos naturales mas interesantes y bellos de Nicaragua. 
+						Fué declarado como el primer Parque Nacional en 1979, con un area de 54 km2 y mas de 20 km de senderos y caminos pintorescos
+						que lo llevaran a los alrededores de dos Volcanes impresionantes y cinco crateres espectaculares.</p>
+						<p>El Volcan Masaya tambien es conocido como POPOGATEPE, que significa "MONTAÑA QUE ARDE", en la Lengua Indigena de la Tribu
+						Chorotega. Unos de sus Crateres, El Santiago, actualmente se encuentra en actividad gaseosa y lava incandescente en su interior.</p>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/atractivo/2/parque-nacional-volcan-masaya" class="button">Más</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">GALER&iacute;A</h1></center>
+
+<div id="gallery">
+	<a href="https://vianica.com/sp/atractivo/2/parque-nacional-volcan-masaya" class="show">
+		<img src="img/masaya/parque.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>El Parque Nacional Volcán Masaya</h3> Formado por bosques y páramo de lava solidificada
+		originada por erupciones y emisiones de magna de los Volcanes Masaya y Nindirí. En la cima del volcán Masaya se observa el cráter Santiago con 500
+		metros de ancho y 200 metros de profundidad, desprendiendo gases y fumarolas activas coquetean con las nubes de su entorno."/>
+	</a>	
+		<a href="img/masaya/san_juan.html">
+		<img src="img/masaya/oriente.jpg" alt="Stone" width="780" height="480" title="" alt="" rel="<h3>San Juan de Oriente o San Juan de los Platos</h3>
+		Es la cuna de la cerámica precolombina que han trabajado el barro y el caolín desde épocas ancestrales.Nandasmo: Sus habitantes emigraron buscando
+		seguridad de las erupciones del volcán Santiago. En lengua Chorotega significa “Junto a los arroyos”, en Nahualt “Lugar arenoso”. Declarado municipio
+		desde el año 1976. Festejan “El Dulce Nombre de Jesús de la Buena Muerte, y el Divino Pastor”."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/2/parque-nacional-volcan-masaya">
+		<img src="img/masaya/cruz.jpg" alt="Grass Blades" width="780" height="460" title="" alt="" rel="<h3>La Cruz de Bobadilla</h3>En lo alto de una colina
+		junto al cráter del Volcán Masaya se levanta una cruz, en el mismo lugar donde fuera plantada otra similar en 1528 por el celoso fraile mercedario
+		Francisco de Bobadilla, con el objeto de exorcizar al diablo. Bobadilla bautizó al volcán como."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/17/laguna-de-apoyo">
+		<img src="img/masaya/masaya9.jpg" alt="Stone" width="780" height="500" title="" alt="" rel="<h3>La Laguna de Apoyo</h3> Es una de las más antiguas de
+		Nicaragua. Se formó cientos de miles de años atrás, luego de la erupción de un volcán cuyo cono abierto fue llenándose gradualmente con agua.
+		Hoy en día, la laguna está rodeada por colinas verdes cubiertas de árboles. El agua es azul cielo y su temperatura es siempre ideal para nadar,
+		gigantesco cráter de origen volcánico con una circunferencia de 6 kilómetros y 200 metros de profundidad, proporcionan al visitante una
+		impresionante belleza, que además se puede pescar, navegación a vela y buceo."/>
+	</a>
+	<a href="http://nicaragua-jmendoza.blogspot.com/2011/03/laguna-de-masaya.html">
+		<img src="img/masaya/laguna_masaya.jpg" alt="Lightning" width="780" height="460" title="" alt="" rel="<h3>La Laguna de Masaya</h3>De origen volcánico, 
+		conocida como la Laguna de Nindirí, tiene una longitud de 9 kilómetros de largo y aproximadamente de 2 a 4 kilómetros de ancho."/>
+	</a>
+	<a href="http://turismoruralnicaragua.blogspot.com/2011/02/la-laguna-de-tisma.html">
+		<img src="img/masaya/tisma.jpg" alt="Mojave" width="780" height="460" title="" alt="" rel="<h3>La Laguna de Tisma</h3>Refugio de vida silvestre y
+		nido de aves migratorias con una gran variedad de peces."/>
+	</a>		
+	<a href="https://vianica.com/sp/atractivo/14/fortaleza-el-coyotepe">
+		<img src="img/masaya/fortaleza.jpg" alt="Pier" width="780" height="460" title="" alt="" rel="<h3>La Fortaleza de El Coyotepe</h3>“Cerro de Coyotes”, 
+		construida en la época del gobierno del General Zelaya, antigua fortaleza al estilo castillos de la época feudal europea, su construyo para vigilar
+		la ciudad de Masaya."/>
+	</a>	
+	<a href="https://vianica.com/sp/atractivo/39/mirador-de-catarina">
+		<img src="img/masaya/mirador.jpg" alt="Sea Mist" width="780" height="460" title="" alt="" rel="<h3>Mirador de Catarina</h3>En honor a Santa Catalina Patrona, como inicialmente
+		se conoció, tenía solamente 4 calles, por ley legislativa sancionada por el Presidente José María Moncada y el Ministerio de Gobernación de Masaya,
+		Sr. Benjamín Abaunza, se leconfirió al Pueblo de Catarina el Titulo de Villa."/>
+	</a>	
+
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>							
+<div class="clear"></div>
+		<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/hotels/hotel_masaya.html">Hoteles</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_masaya.html">Restaurantes</a></li>
+	</ul>
+		<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

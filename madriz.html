@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MADRIZ</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+    <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>MADRIZ</h2>
+							<p>Madriz departamento segoviano
+							</p>
+						</header>
+						<span class="image"><img src="img/madriz/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/madriz/acerca.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>Acerca…<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>El norteño departamento de Madriz posee diversos atractivos naturales y culturales en su mediano territorio, compuesto
+									por altos valles interrumpidos por montañas en donde predominan las frescas temperaturas. Además de sus tranquilas 
+									pequeñas ciudades y pueblos con centros de características casas de adobe con techos de tejas, en la región es posible
+									visitar interesantes formaciones geológicas,</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<P>bosques de pino o nebliselva, ríos de buen caudal, fincas cafetaleras y de
+									otros cultivos, así como pequeños pero muy activos talleres artesanales de productos decorativos y gastronómicos. El
+									monumental Cañón de Somoto es uno de los atractivos principales aquí. Accesible y cercana a la ciudad principal,
+									esta antiguísima estructura natural está formada por altos paredones de roca desnuda que recorren paralelos el lecho del
+									río Coco o Wangki,</P>
+									
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p> que nace por allí. El sitio ofrece un bonito paraje para excursionar, practicar el rappel, apreciar el
+									panorama circundante o disfrutar de las aguas del río nadando, o recorriéndolas en neumáticos inflados o pequeñitos botes
+									de madera.</p>
+									<p>Con su simpático y calmado centro, la mediana ciudad de Somoto es un destino de interés por sí misma y un buen
+									punto desde dónde explorar la región. La urbe es el núcleo administrativo de todo el departamento.</p>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/madriz/Cañon-de-Somoto-Madriz-632x270.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Conglomerado Turístico</h2>							
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<h3>¡El Cañón de Somoto!</h3>
+						<h6 style="text-align:justify">Turismo de aventura y contemplativo. Cuevas de murciélago. Impresionantes farallones de roca volcánica,
+						formación geológica de una antigüedad de entre 5 y 13 millones de años. Belleza paisajística. Alberga el Río Coco, el que forma de la
+						confluencia de los ríos Tapacali que recorre gran parte del departamento de Madriz y el Río Comali que baja de Honduras.</h6></br>
+						<h6 style="text-align:justify">Tiene una extensión aproximadamente de 3km de estrechura geológica de roca volcánica y entre 80 – 
+						250mts de altura, en algunos sitios su garganta reduce su ancho por debajo de los diez metros.</h6>
+						<ul class="actions">
+							<li><a href="https://vianica.com/sp/atractivo/141/canon-de-somoto" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/madriz/calientes.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Bosques, Vientos y Alturas (Las Sabanas, San Lucas y Totogalpa)</h2>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<P>A lo largo de la RESERVA Natural de Tepesomoto La Patasta, en estos municipios se aprecian las panorámicas desde las altas montañas,
+						los ríos, cascadas y reductos de bosques de nebliselva en sus fincas agropecuarias.</P>
+						<p>Así mismo es evidente la permanencia de la cultura indígena ancestral de estos pueblos, que se manifiesta en los antiguos petroglifo
+						s, la renovada artesanía y la realidad actual de la organización comunitaria.</p>
+						<ul class="actions">
+							<li><a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=233:circuito-ii-bosques-vientos-y-alturas-las-sabanas-san-lucas-y-totogalpa&catid=113:tours-de-madriz&Itemid=318" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">TURISMO</h1></center>
+
+<div id="gallery">
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=458%3Aatractivo-6-salto-y-petroglifos-del-rio-apanaje&catid=114%3Aatractivo&Itemid=318" class="show">
+		<img src="img/madriz/C2a8---001.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Salto y Petroglifos del Río Apanaje</h3>
+		Salto y Petroglifos del Río Apanaje. Fuera de los límites de la RESERVA, se encuentra el Salto del Río Apanaje. Para llegar hay que salir del casco
+		urbano de Las Sabanas hacia el oeste, siguiendo un camino de 3 kilómetros sin pavimento, transitable solamente en verano."/>
+	</a>	
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=669%3Aatractivo-7-reserva-natural-la-patasta&catid=114%3Aatractivo&Itemid=318">
+		<img src="img/madriz/C2a7---002jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Reserva Natural la Patasta</h3>
+		Esta constituye una de las RESERVAS más valiosas del país en cuanto a flora y fauna, así como por sus bellos paisajes naturales, entre los que se 
+		destacan lagunas, bosques, ríos, cascadas entre otros."/>
+	</a>	
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=457%3Aatractivo-5-fincas-turisticas&catid=114%3Aatractivo&Itemid=318">
+		<img src="img/madriz/C2a7---003.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Fincas Turísticas</h3>
+		La RESERVA Natural Tepec-Somoto y La Patasta, compartida por los municipios de San Lucas, Somoto y Las Sabanas, constituye una de las áreas protegidas
+		más valiosas del país en cuanto a flora y fauna, así como por sus paisajes y atractivos naturales, entre los que se destacan lagunas, ríos y cascadas.
+		"/>
+	</a>
+		<a href="#">
+		<img src="img/madriz/C2a8---001.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Salto y Petroglifos del Río Apanaje</h3>
+		Salto y Petroglifos del Río Apanaje. Fuera de los límites de la RESERVA, se encuentra el Salto del Río Apanaje. Para llegar hay que salir del casco
+		urbano de Las Sabanas hacia el oeste, siguiendo un camino de 3 kilómetros sin pavimento, transitable solamente en verano."/>
+	</a>
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=459%3Aatractivo-8-salto-y-petroglifos-de-el-eden&catid=114%3Aatractivo&Itemid=318">
+		<img src="img/madriz/C2a9---003.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Salto y Petroglifos del Río Apanaje</h3>
+		Salto y Petroglifos del Río Apanaje. Fuera de los límites de la RESERVA, se encuentra el Salto del Río Apanaje. Para llegar hay que salir del casco
+		urbano de Las Sabanas hacia el oeste, siguiendo un camino de 3 kilómetros sin pavimento, transitable solamente en verano."/>
+	</a>
+	<a href="https://vianica.com/sp/atractivo/133/los-miradores-de-cusmapa">
+		<img src="img/madriz/C2a10---001.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Mirador de La Mano del Diablo</h3>
+		Cerca del mirador turístico (PTI) y a una distancia de 2 km se localiza el Mirador La Mano del Diablo denominado así por los habitantes de la zona. 
+		Desde aquí se puede apreciar el paisaje de la zona."/>
+	</a>
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=456%3Aatractivo-4-laguna-la-bruja-el-pegador&catid=114%3Aatractivo&Itemid=318">
+		<img src="img/madriz/C2a6---001.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Laguna La Bruja– El Pegador</h3>
+		Laguna La Bruja-El Pegador. A 11 kilómetros de San Lucas y a menos de 2 de Las Sabanas, se encuentra la comunidad de El Pegador"/>
+	</a>
+
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>
+				
+				
+<div class="clear"></div>
+<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/hotels/hotel_madriz.html">Hoteles</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_madriz.html">Restaurantes</a></li>
+	</ul>
+	<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

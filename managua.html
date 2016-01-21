@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>MANAGUA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	
+	<body class="landing">			
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+<a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+        <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>MANAGUA</h2>
+							<p>Es la ciudad capital de Nicaragua.<br />
+							Y cabecera del Municipio</p>
+						</header>
+						<span class="image"><img src="images/images/managua.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="images/images/pic02.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>HISTORIA<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>Managua tiene una poblaci&oacute;n de alrededor de 1.028.808 habitantes dentro de sus l&iacute;mites,
+									su &aacute;rea metropolitana, que comprende las ciudades m&aacute;s pobladas y pr&oacute;ximas como Tipitapa y 
+									Ciudad Sandino, cuyo conjunto suma m&aacute;s de 1.259.000 de habitantes, la convierten en la segunda
+									ciudad m&aacute;s poblada de Am&eacute;rica Central, despu&eacute;s de Ciudad de Guatemala.</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>Managua ha sufrido a lo largo de su historia innumerables desastres naturales, principalmente
+									terremotos que han destruido total o parcialmente la ciudad, retrasando d&eacute;cadas de progreso al 
+									borrar la gran mayor &iacute;a de la infraestructura, los m&aacute;s relevantes y recientes ocurrieron en 1931 y 1972,
+									luego de &eacute;ste &uacute;ltimo Managua se convirtir&oacute; en una nube en escombros, sin edificios altos,</p>
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p>empobrecida, 
+									poco atractiva para la inversi&oacute;n, lo mismo que en parte la alej&oacute; los hechos destructivos de la guerra 
+									civil de los a&ntilde;os 70 y 80.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="images/images/puerto.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Sitios de Inter&eacute;s</h2>
+							<p>Puerto Salvador Allende</p>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<p>El Puerto Salvador Allende se levanta hoy en d&iacute;a como un hermoso y moderno centro tur&iacute;stico 
+						que guarda entre sus instalaciones comodidad, calor humano, cultura y mucha naturaleza, logrando
+						de esta manera que sus viajes por el lago sean una experiencia &uacute;nica y satisfactoria. Es todo un
+						reto para los amantes de la naturaleza y la aventura, ya que este lago abriga en su seno peque?as
+						islas entre las que figura la Isla del Amor, la isla Momotombito, entre otros atractivos.</p>
+						<ul class="actions">
+							<li><a href="puerto.html" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="images/images/paseo.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Sitios de inter&eacute;s</h2>
+							<p>El Paseo Xolotlan</p>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<p>Cuenta con &aacute;reas verdes, palmeras reales, senderos peatonales, bancas de reposo,
+						ranchitos familiares, parqueo, seguridad privada, presencia de la polic&iacute;a tur&iacute;stica,
+						&aacute;reas de venta de alimentos y muro perimetral.</p>
+						<ul class="actions">
+							<li><a href="img/managua/paseo.html" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">GALER&iacute;A</h1></center>
+
+<div id="gallery">
+	<a href="#" class="show">
+		<img src="img/managua/managua1.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="El Crowne Plaza® Managua es un hotel 
+		ic&oacute;nico en la capital de Nicaragua. Esta ubicado a 12km del Aeropuerto Internacional e Managua (MGA) y cerca de edificios gubernamentales como
+		la Canciller&iacute;a, la Asamblea Nacional y el INTUR. Adem&aacute;s, embajadas y compañ&iacute;as como Citibank, Banpro y el grupo
+		Promenica se encuentran a sus alrededores. "/>
+	</a>	
+	<a href="#">
+		<img src="img/managua/managua2.jpg" alt="Grass Blades" width="780" height="460" title="" alt="" rel="Managua es la capital de Nicaragua ubicada 
+		en la costa suroeste del lago Managua. En este centro cosmopolita  residen m&aacute;s de 2 millones de habitantes y es la tercera ciudad más poblada de 
+		Am&eacute;rica Central. Situada entre Granada y Le&oacute;n"/>
+	</a>
+	<a href="#">
+		<img src="img/managua/managua4.jpg" alt="Lightning" width="780" height="460" title="" alt="" rel="Entre los atractivos de Managua y lugares a 
+		visitar está  la Antigua Catedral. "/>
+	</a>
+	<a href="#">
+		<img src="img/managua/managua5.jpg" alt="Lotus" width="780" height="460" title="" alt="" rel="Una de las capitales m&aacute;s c&aacute;lidas de 
+		Am&eacute;rica Central, la ciudad est&aacute; a s&oacute;lo 163 pies (50 metros) sobre el nivel del mar. A lo largo de la &eacute;poca colonial 
+		espa&ntilde;ola."/>
+	</a>	
+	<a href="#">
+		<img src="img/managua/managua6.jpg" alt="Mojave" width="780" height="460" title="" alt="" rel="Gran parte de Managua fue reconstruida despu&eacute;s
+		de 1931, cuando fue devastada por el terremoto y el fuego. Despu&eacute;s de otro desastroso terremoto en 1972, la secci&oacute;n de negocios fue
+		reconstruida 6 millas (10 km) de distancia (en el sur y oeste) desde el antiguo centro de la ciudad"/>
+	</a>		
+	<a href="#">
+		<img src="img/managua/managua7.jpg" alt="Pier" width="780" height="460" title="" alt="" rel="Managua, la ciudad m&aacute;s grande del pa&iacute;s, es tambi&eacute;n 
+		su centro de comercio y cultura. Se produce una variedad de pequeños fabricantes, entre ellos la carne procesada, muebles, metal y textiles, y cuenta con una
+		refiner&iacute;a de petr&oacute;leo."/>
+	</a>	
+	<a href="#">
+		<img src="img/managua/managua8.jpg" alt="Sea Mist" width="780" height="460" title="" alt="" rel="Su exquisita comida deleita tanto a ni&ntilde;os como a
+		adultos."/>
+	</a>	
+	<a href="#">
+		<img src="img/managua/managua9.jpg" alt="Stone" width="780" height="460" title="" alt="" rel="Teatro Nacional Rub&eacute;n Dar&iacute;o, templo de la
+		cultura nicaragüense que se caracteriza por presentar espect&aacute;culos de calidad y trascendencia &uacute;nica en el pa&iacute;s, con m&aacute;s de
+		42 a&ntilde;os al servicio del p&uacute;blico nacional e internacional."/>
+	</a>
+	<a href="#">
+		<img src="img/managua/managua10.jpg" alt="Sea Mist" width="780" height="460" title="" alt="" rel="La catedral de la Inmaculada Concepci&oacute;n, o 
+		catedral metropolitana de Managua, se termin&oacute; en 1994."/>
+	</a>
+	<a href="#">
+		<img src="img/managua/managua11.jpg" alt="Stone" width="780" height="460" title="" alt="" rel="Festividades Navide&ntilde;as en el populoso mercado
+		Roberto Huembes."/>
+	</a>
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>				
+<div class="clear"></div>
+	<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/hotels/hotel_managua.html">Hoteles</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_managua.html">Restaurantes</a></li>
+	</ul>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

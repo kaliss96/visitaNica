@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>JINOTEGA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+        <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>JINOTEGA</h2>
+							<p>"Las Brumas"
+							</p>
+						</header>
+						<span class="image"><img src="img/jinotega/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/jinotega/acerca.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>Acerca…<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>El departamento norteño de Jinotega es uno de los más extensos del país y posee diversos atractivos naturales de gran 
+									importancia, además de ciudades de ambien tranquilo, pueblos campesinos y remotas comunidades indígenas autóctonas. En su 
+									territorio montañoso se alternan macizos húmedos, largos valles y algunas mesetas de clima fresco pero seco.</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<P> Importantes 
+									reservas naturales, dos lagos y caudalosos ríos están presentes en esta región caracterizada, también, por la producción de
+									excelente café y hortalizas, además de bellas vistas panorámicas.</p>
+									<p>Ubicada en el extremo Sur y rodeada por altas montañas,
+									la ciudad de Jinotega es el centro administrativo regional y un importante destino con diversos atractivos cercanos.</P>
+									
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p> El casco urbano es bastante apacible y cuenta con locales de servicios turísticos. Además de las fincas cafetaleras de 
+								 los alrededores, un sitio de interés resulta ser la reserva natural Datanlí-El Diablo. Muy cerca está también el amplio Lago
+								 de Apanás, y el poco conocido Lago El Dorado.</p>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/jinotega/salto.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Conglomerado Turístico</h2>							
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<h3>¡Salto La Mocuana!</h3>
+						<h6 style="text-align:justify">Salto La Mocuana. Todo el sector entre el Cerro Chimborazo y el Cerro Datanlí constituye la cuenca
+						hidrográfica del Río Jigüina, el cual desemboca después de un breve recorrido en el lago de Apanás. Cerca de la Fundadora se encuentra
+						una caída de agua de un afluente de este río, con una altura aproximadamente de 7 metros. Caminando por el sendero natural que da
+						acceso a la cascada se puede admirar la amplia diversidad de flora entre las que se destacan heliotropos, tatacame, bambú, musgos y
+						helechos. En estos lugares se mantiene una humedad y temperatura fresca y agradable casi todo el año.</h6>
+
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/jinotega/mirador.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>¡Atráctivos Turísticos!</h2>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<h3>Mirador Las Peñitas y Mirador Domingo</h3>
+						<h6 style="text-align:justify">Mirador Las Peñitas y Mirador Domingo. Desde los puntos más alto la finca La Sultana se logra una vista panorámica hacia el Norte
+						del Lago de Apanás y hacia el sur de las Montañas de Matagalpa, que aparecen en la fresca neblina. También en estos sitios se observan
+						la amplia variedad de flora y fauna entre la cual se destacan árboles de areno, guaba, nogal, elequeme, roble, aguacate, y especies de
+						animales como armadillo, cusuco, venado, perezoso, oropéndola, culebra, pericos y guardiola.</h6>
+
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">TURISMO</h1></center>
+
+<div id="gallery">
+	<a href="https://vianica.com/sp/atractivo/412/lago-de-apanas" class="show">
+		<img src="img/jinotega/apanas.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Panorámicas de Jinotega y aventuras en el lago de Apanás</h3>
+		Este lago artificial, es una notable obra de ingeniería realizada en los años 60 por empresas y profesionales europeos y nicaragüenses. Represando las
+		aguas de los ríos Tuma, Jigüina y Mancotal se obtuvo un espejo de agua de 54.15 km2. kilómetros cuadrados, el lago artificial más grande de Nicaragua."
+		/>
+	</a>	
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=226%3Aatractivo-3-paisaje-protegido-miraflor-moropotente&catid=105%3Aatractivo&Itemid=197">
+		<img src="img/jinotega/reserva.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Paisaje protegido Miraflor – Moropotente</h3>
+		Paisaje protegido Miraflor  Moropotente. Esta reserva de 468 kilómetros cuadrados se comparte entre los
+		municipios de Estelí, Condega San Sebastián de Yalí y La Concordia."/>
+	</a>	
+    <a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=564%3Aatractivo-13-las-cascadas-la-union-y-cascadas-verdes&catid=105%3Aatractivo&Itemid=197">
+		<img src="img/jinotega/cascadas.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Las Cascadas La Unión y Cascadas Verdes</h3>
+		Las cascadas tienen en promedio 7 metros de altura. Aquí se pueden llevar a cabo caminatas desde donde podrás disfrutar de observación de  aves y 
+		bellos paisajes naturales de la zona."/>
+	</a>
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=563%3Aatractivo-12-fincas-agro-eco-turisticas-en-san-rafael-del-norte&catid=105%3Aatractivo&Itemid=197">
+		<img src="img/jinotega/fincas.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="
+		<h3>Fincas Agro eco turísticas en San Rafael del Norte</h3>
+		Dentro de las iniciativas agro turísticas están la Finca Kilimanjaro, a 6 km del casco urbano es una propiedad de más de 500 manzanas, donde se goza
+		de un clima de envidiable frescura, a 1,200 metros de altura sobre el nivel del mar."/>
+	</a>
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=672%3Aatractivo-14-canopy-la-brellera&catid=105%3Aatractivo&Itemid=197">
+		<img src="img/jinotega/canopy.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Canopy La Brellera</h3>
+		El circuito consta de 9 plataformas aéreas con capacidad para 8 personas, 8 tramos de cabes de diámetro Ø 3/8 con alma de acero y capacidad de 8 
+		toneladas, 2 puentes colgantes, 1 plataforma de abordaje y una rampa para cambio de nivel."/>
+	</a>
+    <a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=558%3Aatractivo-7-corredor-agro-eco-turistico-e-historico-de-yali&catid=105%3Aatractivo&Itemid=197">
+		<img src="img/jinotega/corredor.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Corredor Agro eco turístico e Histórico de
+		Yalí</h3>
+		En el kilómetro 11 hay está la entrada para el Salto de San Antonio y más allá se encuentran los escenarios del Combate de Montecristo y de la
+		Emboscada de San Antonio, sitios históricos de la lucha de Sandino que al momento no están señalados."/>
+	</a>	
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>
+				
+<div class="clear"></div>
+
+<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+				<li class="contenedor-boton"><a class="botoncito" href="departamentos/hotels/hotel_jinotega.html">Hoteles</a></li>
+		        <li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_jinotega.html">Restaurantes</a></li>
+	</ul>
+	
+		<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>NUEVA SEGOVIA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/flotante.css" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+<link rel="stylesheet" href="css/app.css" media="screen" charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<script type="text/javascript">
+
+$(document).ready(function() {		
+	
+	//Execute the slideShow
+	slideShow();
+
+});
+
+function slideShow() {
+
+	//Set the opacity of all images to 0
+	$('#gallery a').css({opacity: 0.0});
+	
+	//Get the first image and display it (set it to full opacity)
+	$('#gallery a:first').css({opacity: 1.0});
+	
+	//Set the caption background to semi-transparent
+	$('#gallery .caption').css({opacity: 0.7});
+
+	//Resize the width of the caption according to the image width
+	$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+	
+	//Get the caption of the first image from REL attribute and display it
+	$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+	.animate({opacity: 0.7}, 400);
+	
+	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+	setInterval('gallery()',6000);
+	
+}
+
+function gallery() {
+	
+	//if no IMGs have the show class, grab the first image
+	var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+
+	//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+	var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+	
+	//Get next image caption
+	var caption = next.find('img').attr('rel');	
+	
+	//Set the fade in effect for the next image, show class has higher z-index
+	next.css({opacity: 0.0})
+	.addClass('show')
+	.animate({opacity: 1.0}, 1000);
+
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
+	
+	//Set the opacity to 0 and height to 1px
+	$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+	
+	//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+	$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+	
+	//Display the content
+	$('#gallery .content').html(caption);
+	
+	
+}
+
+</script>
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<style>
+#gallery {
+	position:relative;
+	height:460px;
+	margin-left:5%;
+	margin-right:150%;	
+}
+	#gallery a {
+		float:left;
+		position:absolute;
+	}
+	
+	#gallery a img {
+		border:none;
+	}
+	
+	#gallery a.show {
+		z-index:100;
+	}
+
+	#gallery .caption {
+		z-index:800; 
+		background-color:#000; 
+		color:#ffffff; 
+		height:100px; 
+		width:100%; 
+		position:absolute;
+		bottom:0;
+	}
+
+	#gallery .caption .content {
+		margin:5px;
+	}
+	
+	#gallery .caption .content h3 {
+		margin:0;
+		padding:0;
+		color:#1DCCEF;
+	}	
+
+#social{
+border:1px solid #FFFAFA;
+border-radius:10px;/*Establecemos el radio del borde*/
+margin-left:78%;
+margin-right:55%;
+width:10%;
+   }
+</style>
+	</head>
+	<body class="landing">
+	        <div id="social">
+				<p>.</p>   
+            </div>
+			 			<div class="mainWrap">
+ <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Menu</a> 	
+    <nav>
+        <ul class="menu">
+<li><a href="index.html"><i class="icon-home"></i>INICIO</a>
+   </li>  
+  <li><a  href="departamentos/departamentos.html"><i class="icon-bullhorn"></i>DEPARTAMENTOS</a>  
+  </li>
+  <li><a  href="galeria.html"><i class="icon-camera"></i>GALERÍA</a></li> 
+<li><a  href="departamentos/hoteles.html"><i class="icon-film"></i>HOTELES</a></li>
+<li><a  href="departamentos/bares.html"><i class="icon-camera"></i>RESTAURANTES</a></li>
+  <li><a  href="about.html"><i class="icon-user"></i>CONTACTOS</a></li>
+  </ul>
+  </nav>
+			
+		<div id="page-wrapper">	
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>NUEVA SEGOVIA</h2>
+							<p>La Región de "Las Segovias".</p>
+						</header>
+						<span class="image"><img src="img/nueva_segovia/portada.jpg" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- One -->			
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="img/nueva_segovia/segovia.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+								<h2>ACERCA<h2>
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<p>En toda su mediana extensión montañosa, Nueva Segovia tiene diversos atractivos naturales entre los que se cuentan
+									cerros de gran altura que conservan sus bosques de pino y roble, ríos de buen caudal, cascadas y sitios de aguas termales.
+									Este departamento se ubica en uno de los extremos Norte del país y goza de un agradable clima fresco, sus pequeñas ciudades
+									y pueblos se caracterizan 
+									</p>
+								</div>
+								<div class="4u 12u$(medium)">
+								<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+									<P>por su ambiente tranquilo y las céntricas casas de adobe con techos de tejas; en algunos de ellos hay talleres
+									artesanales que producen interesantes piezas decorativas.La ciudad de Ocotal es el centro administrativo de la región. 
+									Muy activa durante el día y bastante tranquila en la noche, esta urbe posee en su atractivo centro un muy arborizado
+									parque con kioscos y bancas,</P>
+								</div>
+								<div class="4u$ 12u$(medium)">
+                                <h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+								 <p>alrededor del cual hay casas de estilo colonial entre las que está una biblioteca y centro
+									cultural; en una de las aceras del parque está, como detalle interesante y ornamentación pública, un pequeño cañón de
+									pólvora antiguo. Hay hoteles, restaurantes, bares y pequeñas discotecas de buen ambiente.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="img/nueva_segovia/tradiciones.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Tradiciones</h2>							
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<p>El fronterizo departamento de Nueva Segovia limítrofe con Honduras con sus tejidos territorios de frondosos pinos abundancia de
+						potencia hídrico y gran cantidad de fuentes termales, montañas boscosas, haciendas cafetaleras, cascadas impresionantes, casas de 
+						campo, viñedos, artesanías, crianzas de caballos y territorio por excelencia de la gesta heroica del General de Hombres Libres espera
+						a miles de turistas para conocer “La Ruta de Sandino”.</p>
+						<p>Las Fiestas tradicionales son: Fiestas Patronales dedicados a la virgen de la Asunción, la Gritería a la virgen Maria, Fiestas 
+						Patrias, Súper Carnaval Ocotal, Carnaval Ecológico, Carnaval de Instituto Nacional Leonardo Matute, Feria del Café, Desfile de 
+						Burritos.</p>
+						<ul class="actions">
+							<li><a href="http://www.visitanicaragua.com/nueva-segovia/" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="img/nueva_segovia/ocotal.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Ocotal</h2>
+						</header>
+						<h1 style="font-family: Lucida Sans Unicode; text-align: justify; font-size: 15px">
+						<p>La ciudad de Ocotal se estableció en el año de 1782 como parte del ultimo traslado de la ciudad Segoviana, obligados por los constantes 
+						ataques que se resistían al sometimiento de los españoles, a los cual se sumaban los violentos asaltos y saqueos que incursionaban los 
+						asentamientos, navegando el entonces caudaloso rio coco desde el mar Caribe.</p>
+						<P>La primera reproducción de nueva Segovia fue erigida por los vecinos españoles y criollos de la segunda nueva ciudad segoviana en 
+						el sitio conocido como san Antonio de Tejas.</P>
+						<ul class="actions">
+							<li><a href="http://elesteliano.com/revista/may2007/gente.htm" class="button">M&aacute;s</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+				<center><h1 align="center">Sitios Turísticos</h1></center>
+
+<div id="gallery">
+	<a href="https://elchinonica.wordpress.com/2012/11/22/cerro-mogoton/" class="show">
+		<img src="img/nueva_segovia/cerro.jpg" alt="Flowing Rock" width="780" height="460" title="" alt="" rel="<h3>Cerro Mogoton</h3>Si usted busca un sitio
+		para descansar, disfrutar, aprender técnicas convencionales de campo y estar en contacto con la naturaleza, ofertamos   servicios de guias turisticos
+		para experimentar los pisos altitudinales del cerro Mogoton y disfrute de una agradable aventura."/>
+	</a>	
+	<a href="http://infodenic.com/reserva-natural-cordillera-dipilto-jalapa-san-fernando.htm">
+		<img src="img/nueva_segovia/cordillera.jpg" alt="Sea Mist" width="780" height="475" title="" alt="" rel="<h3>La Reserva Serranía Dipilto – Jalapa</h3>
+		Posee las crestas más elevadas y continuadas de Nicaragua figurando entre otras: Mogotón (2,106 m), la montaña más alta del país. Los Cabros (2,040 m),
+		Volcancito (1,904 m), Bayuncún (1,638 m), Guambuco (1,546 m), Jesús (1,793 m) y Jalapa (1,700 m). Las laderas empinadas de estas sierras están 
+		cubiertas por pinares u ocotes, con parches de bosques nubosos en las cumbres.
+"/>
+	</a>	
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=420%3Aatractivo-1-aguas-termales-de-macuelizo&catid=115%3Aatractivo&Itemid=323">
+		<img src="img/nueva_segovia/termales.jpg" alt="Grass Blades" width="780" height="460" title="" alt="" rel="<h3>Aguas Termales de Macuelizo</h3>Se 
+		trata de unas aguas calientes, consideradas curativas, que convergen en una corriente que vierte en el río Macuelizo. El sitio está acondicionado
+		para turismo pero no está señalizado en la carretera, así que solo se puede visitar con la ayuda de un guía local."/>
+	</a>
+	<a href="http://www.g-rdc.com/index.php?option=com_content&view=article&id=514%3Aatractivo-9-cascada-el-escambray-&catid=115%3Aatractivo&Itemid=325">
+		<img src="img/nueva_segovia/cascada.jpg" alt="Lightning" width="780" height="460" title="" alt="" rel="<h3>Cascada el Escambray</h3>A la mitad del
+		mismo camino del Cerro Jesús, se encuentra el conocido Salto del Escambray, ubicado en una finca privada en la comunidad del mismo nombre. La 
+		impresionante caída de agua se presenta en el escenario de montaña de la Cordillera Dipilto - Jalapa, aunque está fuera de los límites de la reserva
+		natural."/>
+	</a>		
+
+	<div class="caption"><div class="content"></div></div>
+                    </div>
+					</div>
+				</section>
+				
+<div class="clear"></div>
+
+<ul class="botones-menu">
+		<li class="contenedor-boton"><a class="botoncito" href="#">SITIOS</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/hotels/hotel_nueva_segovia.html">Hoteles</a></li>
+		<li class="contenedor-boton"><a class="botoncito" href="departamentos/restaurants/bar_nueva_segovia.html">Restaurantes</a></li>
+	</ul>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+
+						<li><a href="https://www.facebook.com/nicaturisc/?skip_nax_wizard=true" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://plus.google.com/collection/Um0UZB" class="icon alt fa-envelope"><span class="label">Gmail</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">Karen Aguirre</a></li>
+					</ul>
+				</footer>
+				
+					<h1 id="logo"><a href="index.html">Menu</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">INICIO</a></li>
+							<li><a href="departamentos/departamentos.html">DEPARTAMENTOS</a></li>
+							<li><a href="galeria.html">GALERÍA</a></li>
+							<li><a href="about.html">CONTACTOS</a></li>							
+						</ul>
+					</nav>
+		</div>
+
+
+		<!-- Scripts -->
+			<script src="js/js/jquery.min.js"></script>
+			<script src="js/js/jquery.scrolly.min.js"></script>
+			<script src="js/js/jquery.dropotron.min.js"></script>
+			<script src="js/js/jquery.scrollex.min.js"></script>
+			<script src="js/js/skel.min.js"></script>
+			<script src="js/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="js/js/main.js"></script>
+
+	</body>
+</html>
